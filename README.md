@@ -14,7 +14,7 @@ You can configure your AAD Enterprise Application to either provision all of you
 ## Prerequisites
 - A username field is required
   - Modify your model and migration to include a username field
-  - Add username to the $fillable propertie of your user model
+  - Add username to the $fillable property of your user model
 - We recommend use of an active/status field for user soft delete
 - The default configuration will create a [`spatie/laravel-permission`](https://spatie.be/docs/laravel-permission/v4/installation-laravel) Role for each Group. To use the default configuration ensure you have required [`spatie/laravel-permission`](https://spatie.be/docs/laravel-permission/v4/installation-laravel)
 
