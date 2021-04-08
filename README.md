@@ -20,13 +20,13 @@ You can configure your AAD Enterprise Application to either provision all of you
 
 ## Installation
 1. Run `composer require robtrehy/laravel-azure-provisioning` to include this in your project.
-2. Run `php artisan vendor:public --provider="RobTrehy\LaravelAzureProvisioning\AzureProvisioningProvider"`.
+2. Run `php artisan vendor:publish --provider="RobTrehy\LaravelAzureProvisioning\AzureProvisioningProvider"`.
 3. Modify the published configuration file to your requirements. The file is located at `config/azureprovisioning.php`.
 
 ## Configuration (Laravel)
 1. Open `config/azureprovisioning.php` to adjust the packages configuration
 
-    If the file doesn't exist, ensure you have ran `php artisan vendor:public --provider="RobTrehy\LaravelAzureProvisioning\AzureProvisioningProvider"`.
+    If the file doesn't exist, ensure you have ran `php artisan vendor:publish --provider="RobTrehy\LaravelAzureProvisioning\AzureProvisioningProvider"`.
 
 2. Modify the configuration as required. All fields are commented and should provide enough description for how they change the way this package works.
 
