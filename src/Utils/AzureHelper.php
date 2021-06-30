@@ -126,7 +126,6 @@ class AzureHelper
                     ? $resourceType->getSchema()
                     : [$resourceType->getSchema()];
             }
-
             $result = self::roughen($result, $resourceType, $object, $attributes, $excludedAttributes);
 
             if ((count($attributes) === 0 || self::inArrayi('meta', $attributes)) &&
@@ -153,7 +152,8 @@ class AzureHelper
         array $excludedAttributes = []
     ) {
         return response(self::objectToSCIMArray($object, $resourceType, $attributes, $excludedAttributes))
-            ->header('Location', self::objectLocation($object, $resourceType))
+        // Leaving this in causes a loop when getting an object
+            // ->header('Location', self::objectLocation($object, $resourceType))
             ->setEtag(self::getResourceObjectVersion($object));
     }
 
@@ -334,7 +334,7 @@ class AzureHelper
             } else {
                 if (empty($attributes) || self::inArrayi($key, $attributes)) {
                     if ($key === "active") {
-                        $result[$key] = ($object->{$value} === true) ? true : false;
+                        $result[$key] = ($object->{$value} === true || $object->{$value} === "1") ? true : false;
                     } else {
                         $result[$key] = $object->{$value};
                     }

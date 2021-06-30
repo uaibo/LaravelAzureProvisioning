@@ -169,11 +169,19 @@ class UsersResourceType extends ResourceType
             case "replace":
                 if (isset($operation['path'])) {
                     $attribute = $this->getMappingForAttribute($operation['path']);
-                    $object->{$attribute} = $operation['value'];
+                    if ($attribute === "active") {
+                        $object->{$attribute} = ($operation['value'] === true) ? '1' : '0';
+                    } else {
+                        $object->{$attribute} = $operation['value'];
+                    }
                 } else {
                     foreach ($operation['value'] as $key => $value) {
                         $attribute = $this->getMappingForAttribute($key);
-                        $object->{$attribute} = $value;
+                        if ($attribute === "active") {
+                            $object->{$attribute} = ($value === true) ? '1' : '0';
+                        } else {
+                            $object->{$attribute} = $value;
+                        }
                     }
                 }
                 break;
